@@ -1,0 +1,82 @@
+*****************Angry Charles*****************
+
+Problem Description:
+
+Charles is in his last year of engineering college and is still scared of maths, so he passed on his assignmentto you.
+
+He believes that any integer of the form A^x + B^y makes him angry. So, he gives you an integer array X of size N.
+
+For each X[i], You have to find count of angry integers less than X[i].
+
+Input Format:
+
+The first line of input contains an integer N which denotes the size of array.
+The second line of input contains an integer A.
+The third line of input contains an integer B.
+The fourth line of input contains an integer array X of size N.
+
+Output Format
+For each X[i], output the count of angry integers less than X[i] on a new line.
+
+Sample Input:
+3
+10
+3
+2 4 11
+
+Sample Output:
+0
+1
+3
+
+Constraints:
+1 <=N<= 100000
+1 <= A,B <= 1000
+
+
+Solution:
+
+import java.util.*;
+public class Main
+{
+  public static void main (String[]args)
+  {
+
+    int n = 3;
+    int A = 10;
+    int B = 3;
+
+    int[] arr = new int[]{ 2,4,11 };
+    double sum=0.0;
+    int ans=0;
+    int ctr=0;
+    
+    int newarr[] = new int[n];
+    
+    for (int i = 0; i < arr.length; i++)
+      {
+	        int e = arr[i];
+            for (int j = 0; j < e; j++)
+	       {
+	            for (int k = j; k < e; k++)
+	            {
+		            sum = Math.pow (A, j) + Math.pow (B, k);
+	                ans= (int)sum;
+		            
+		            if (ans < arr[i])
+		            {
+		                ctr++;
+		            }
+	            }
+	   }
+	   newarr[i] = ctr;
+	     System.out.println ("ctr:"+ctr);
+	     ctr=0;
+      }
+      
+      for(int v=0;v<newarr.length;v++)
+      {
+          System.out.println (newarr[v]);
+      }
+  }
+}
