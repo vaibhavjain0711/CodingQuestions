@@ -1,0 +1,57 @@
+In a particular social network friends are automatically allocated to users by the system and users cannot add friends of their choice ok their own. 
+There are currently N users on the social network , labeled from 2 to N+1. 
+
+For every i' th user ( where i ranges from 2 to N +1), the system allocated all the users labeled with multiples of i as the user the user's friends (if possible).
+
+One day all the users of the social network come together for a meeting and from group's such that each person in a group is a Direct friend or 
+a friend of friend of every other person of that group. 
+
+Find total number of groups. 
+
+Input specifications: input1: N, denoting number of users on the social network 
+
+Output specifications: your function should return the number of groups that can be formed on the given conditions. 
+
+Example : 
+input1 :5 
+Output:2 
+
+Explanation: 
+two group's will be formed 
+2,3,4,6 
+5
+
+SOLUTION :
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int friendsGroup(int input1);
+bool checkPrime(int num);
+
+int main()
+{
+  int k= friendsgroup(10);
+   cout << k; 
+   return 0;
+}
+
+int friendsGroup(int input1)
+{
+   int n=input1;
+    int ans = 1;
+  for(int i = 2; i <= n + 1; i++)
+        if(checkPrime(i) && i * 2 > n + 1) ans++;
+    if(n <= 2) ans--;
+        
+    return ans;
+}
+
+bool checkPrime(int num)
+{
+    for(int i=2; i<=sqrt(num); i++)
+    {
+        if(num%i == 0) return false;
+    }
+    return true;
+}
